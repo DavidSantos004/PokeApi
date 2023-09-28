@@ -30,12 +30,6 @@ Este es un proyecto de Pokedex en línea que te permite buscar información deta
 
 5. Para buscar otro Pokémon, simplemente repite el paso 2.
 
-## Capturas de Pantalla
-
-![Captura de Pantalla 1](screenshot1.png)
-
-![Captura de Pantalla 2](screenshot2.png)
-
 ## Contribuciones
 
 Si deseas contribuir a este proyecto, ¡eres bienvenido! Puedes hacerlo de las siguientes maneras:
