@@ -30,6 +30,10 @@ Este es un proyecto de Pokedex en línea que te permite buscar información deta
 
 5. Para buscar otro Pokémon, simplemente repite el paso 2.
 
+## Capturas de Pantalla
+
+![Captura de Pantalla](screenshot1.png)
+
 ## Contribuciones
 
 Si deseas contribuir a este proyecto, ¡eres bienvenido! Puedes hacerlo de las siguientes maneras:
@@ -40,5 +44,3 @@ Si deseas contribuir a este proyecto, ¡eres bienvenido! Puedes hacerlo de las s
 - Proporcionando retroalimentación sobre el proyecto.
 
 #DAVID ANDRES SANTOS MOSQUERA 
-
-
