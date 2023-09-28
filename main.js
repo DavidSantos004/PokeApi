@@ -9,6 +9,8 @@ const pokeTypes = document.querySelector('[data-poke-types]');
 const pokeStats = document.querySelector('[data-poke-stats]');
 const pokeHistory = document.querySelector('[data-poke-history]');
 
+
+//colores que se le pondra a el texto segun el tipo de pokemon
 const typeColors = {
     electric: '#FFEA70',
     normal: '#B09398',
@@ -30,6 +32,7 @@ const typeColors = {
 };
 
 
+//buscar pokemon
 const searchPokemon = event => {
     event.preventDefault();
     const { value } = event.target.pokemon;
@@ -39,7 +42,12 @@ const searchPokemon = event => {
         .catch(err => renderNotFound())
 }
 
+//rendertizar informacion del pokemon
+
+
+//renderizar nombre, imagen, y id
 const renderPokemonData = data => {
+
     const sprite =  data.sprites.front_default;
     const { stats, types } = data;
 
@@ -49,6 +57,10 @@ const renderPokemonData = data => {
     setCardColor(types);
     renderPokemonTypes(types);
     renderPokemonStats(stats);
+    const button = document.createElement("input");
+        button.setAttribute("type", "submit");
+        button.setAttribute("value", "Actualizar"); 
+        pokeCard.appendChild(button)
 }
 
 
@@ -67,20 +79,45 @@ const renderPokemonTypes = types => {
     });
 }
 
+//renderizar las habilidades del pokemon
+
 const renderPokemonStats = stats => {
     pokeStats.innerHTML = '';
+
     stats.forEach(stat => {
         const statElement = document.createElement("div");
         const statElementName = document.createElement("div");
         const statElementAmount = document.createElement("div");
+        const statElementInput = document.createElement("input")
+        statElementInput.setAttribute("type", "range")
+        statElementInput.setAttribute("value", stat.base_stat)
+        statElementInput.textContent = stat.base_stat;
         statElementName.textContent = stat.stat.name;
         statElementAmount.textContent = stat.base_stat;
         statElement.appendChild(statElementName);
         statElement.appendChild(statElementAmount);
+        statElement.appendChild(statElementInput);
         pokeStats.appendChild(statElement);
+        update();
     });
+
+    //mostrar boton para actualizar cambios
+    
+    
 }
 
+
+// con esto podemos ver los cambios que hagamos a los stats con el input de tipo range
+let update = ()=>{
+    pokeStats.addEventListener("input", (e)=> {
+    if(e.target.type === "range"){
+    const label = e.target.previousElementSibling;
+    label.innerHTML = `${e.target.value}`;
+    }
+  })
+}
+
+//si no se encuentra algun dato o ocurre un error
 const renderNotFound = () => {
     pokeName.textContent = 'No encontrado';
     pokeImg.setAttribute('src', 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/029b8bd9-cb5a-41e4-9c7e-ee516face9bb/dayo3ow-7ac86c31-8b2b-4810-89f2-e6134caf1f2d.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzAyOWI4YmQ5LWNiNWEtNDFlNC05YzdlLWVlNTE2ZmFjZTliYlwvZGF5bzNvdy03YWM4NmMzMS04YjJiLTQ4MTAtODlmMi1lNjEzNGNhZjFmMmQuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.ooubhxjHp9PIMhVxvCFHziI6pxDAS8glXPWenUeomWs');
@@ -97,6 +134,7 @@ const spinner = document.querySelector("#spinner");
 const previous = document.querySelector("#previous");
 const next = document.querySelector("#next");
 
+//paginado de lista de pokemones
 let limit = 8;
 let offset = 1;
 
@@ -107,13 +145,13 @@ previous.addEventListener("click", () => {
     fetchPokemons(offset, limit);
   }
 });
-
 next.addEventListener("click", () => {
   offset += 9;
   removeChildNodes(pokemonContainer);
   fetchPokemons(offset, limit);
 });
 
+//para traer los pokemones
 function fetchPokemon(id) {
   fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
     .then((res) => res.json())
@@ -122,7 +160,6 @@ function fetchPokemon(id) {
       spinner.style.display = "none";
     });
 }
-
 function fetchPokemons(offset, limit) {
   spinner.style.display = "block";
   for (let i = offset; i <= offset + limit; i++) {
@@ -130,6 +167,7 @@ function fetchPokemons(offset, limit) {
   }
 }
 
+//para mostar cada card de cada pokemon
 function createPokemon(pokemon) {
   const card= document.createElement('div')
     card.classList.add('pokemon-block')
@@ -157,46 +195,10 @@ function createPokemon(pokemon) {
     pokemonContainer.appendChild(card)
 }
 
-function progressBars(stats) {
-  const statsContainer = document.createElement("div");
-  statsContainer.classList.add("stats-container");
-
-  for (let i = 0; i < 3; i++) {
-    const stat = stats[i];
-
-    const statPercent = stat.base_stat / 2 + "%";
-    const statContainer = document.createElement("stat-container");
-    statContainer.classList.add("stat-container");
-
-    const statName = document.createElement("p");
-    statName.textContent = stat.stat.name;
-
-    const progress = document.createElement("div");
-    progress.classList.add("progress");
-
-    const progressBar = document.createElement("div");
-    progressBar.classList.add("progress-bar");
-    progressBar.setAttribute("aria-valuenow", stat.base_stat);
-    progressBar.setAttribute("aria-valuemin", 0);
-    progressBar.setAttribute("aria-valuemax", 200);
-    progressBar.style.width = statPercent;
-
-    progressBar.textContent = stat.base_stat;
-
-    progress.appendChild(progressBar);
-    statContainer.appendChild(statName);
-    statContainer.appendChild(progress);
-
-    statsContainer.appendChild(statContainer);
-  }
-
-  return statsContainer;
-}
-
+//con esto borramos los pokemones ya mostrado para mostrar los siguientes
 function removeChildNodes(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }
 }
-
 fetchPokemons(offset, limit);
