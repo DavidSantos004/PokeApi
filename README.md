@@ -32,7 +32,7 @@ Este es un proyecto de Pokedex en línea que te permite buscar información deta
 
 ## Capturas de Pantalla
 
-![Captura de Pantalla](screenshot1.png)
+![Captura de Pantalla](captura1.png)
 
 ## Contribuciones
 
