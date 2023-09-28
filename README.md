@@ -1,32 +1,50 @@
-# Pokédex en JavaScript
-Este es un proyecto de una Pokédex simple desarrollada en JavaScript. El objetivo principal de este proyecto es aprender cómo consumir APIs y cómo manipular el DOM para crear una aplicación web interactiva.
+## Pokedex en Línea
 
-## Funcionalidades
-Búsqueda de Pokémon: Los usuarios pueden buscar Pokémon por su nombre o número de Pokédex y ver información detallada sobre ellos.
+Este es un proyecto de Pokedex en línea que te permite buscar información detallada sobre diferentes Pokémon. El proyecto está diseñado para ayudarte a aprender sobre el consumo de APIs y el manejo del DOM en JavaScript. Puedes acceder a la versión en vivo de este proyecto [aquí](https://davidsantos004.github.io/PokeApi/).
+
+## Características
+
+- **Búsqueda de Pokémon**: Ingresa el nombre de un Pokémon en el campo de búsqueda y obtén información detallada sobre ese Pokémon en tiempo real.
+
+- **Actualización de Estadísticas**: Puedes ajustar las estadísticas de un Pokémon utilizando controles deslizantes y ver cómo cambian sus estadísticas en tiempo real.
+
+- **lista de todos los pokemones**: En la lista estan todos los pokemones donde puedes ver una imagen de ellos y su nombre
 
 ## Tecnologías Utilizadas
-### HTML: La estructura de la página está construida con HTML.
 
-### CSS: Se utiliza CSS para dar estilo y diseño a la Pokédex.
-
-### JavaScript: El comportamiento interactivo de la Pokédex se implementa con JavaScript.
-
-### PokéAPI: Se consume esta API para obtener información detallada sobre los Pokémon.
+- HTML: Para la estructura de la página web.
+- CSS: Para el estilo y diseño de la página.
+- JavaScript: Para la interacción con la API de Pokémon y la manipulación del DOM.
+- Bootstrap: Para la creación de componentes y estilos adicionales.
+- PokeAPI: Una API pública que proporciona información detallada sobre Pokémon.
 
 ## Instrucciones de Uso
-Clona este repositorio en tu máquina local.
 
-Abre el archivo index.html en tu navegador web.
+1. Abre la página web [Pokedex en Línea](https://davidsantos004.github.io/PokeApi/) en tu navegador.
 
-Utiliza la barra de búsqueda para buscar Pokémon por su nombre o número de Pokédex.
+2. En el campo de búsqueda, escribe el nombre de un Pokémon y presiona "Enter" o el botón de búsqueda.
 
-Haz clic en un Pokémon en la lista para ver su información detallada.
+3. Verás información detallada sobre el Pokémon, incluyendo su nombre, imagen, tipo(s) y estadísticas.
 
-Puedes marcar Pokémon como favoritos haciendo clic en el botón de favoritos.
+4. Puedes ajustar las estadísticas del Pokémon utilizando los controles deslizantes y ver cómo cambian en tiempo real.
+
+5. Para buscar otro Pokémon, simplemente repite el paso 2.
+
+## Capturas de Pantalla
+
+![Captura de Pantalla 1](screenshot1.png)
+
+![Captura de Pantalla 2](screenshot2.png)
 
 ## Contribuciones
-Siéntete libre de contribuir a este proyecto. Puedes agregar nuevas funcionalidades, mejorar el diseño o corregir errores. ¡Tus contribuciones son bienvenidas!
 
+Si deseas contribuir a este proyecto, ¡eres bienvenido! Puedes hacerlo de las siguientes maneras:
 
-# David Andres Santos Mosquera
+- Realizando mejoras en la interfaz de usuario.
+- Agregando nuevas características o funcionalidades.
+- Solucionando problemas o errores conocidos.
+- Proporcionando retroalimentación sobre el proyecto.
+
+#DAVID ANDRES SANTOS MOSQUERA 
+
 
