@@ -42,9 +42,6 @@ const searchPokemon = event => {
         .catch(err => renderNotFound())
 }
 
-//rendertizar informacion del pokemon
-
-
 //renderizar nombre, imagen, y id
 const renderPokemonData = data => {
 
@@ -57,10 +54,6 @@ const renderPokemonData = data => {
     setCardColor(types);
     renderPokemonTypes(types);
     renderPokemonStats(stats);
-    const button = document.createElement("input");
-        button.setAttribute("type", "submit");
-        button.setAttribute("value", "Actualizar"); 
-        pokeCard.appendChild(button)
 }
 
 
@@ -99,13 +92,15 @@ const renderPokemonStats = stats => {
         statElement.appendChild(statElementInput);
         pokeStats.appendChild(statElement);
         update();
-    });
-
-    //mostrar boton para actualizar cambios
-    
-    
+    });    
 }
-
+//mostrar boton para actualizar cambios
+const button = document.createElement("input");
+        button.setAttribute("type", "submit");
+        button.setAttribute("value", "Actualizar");
+        button.setAttribute("class", "actualizar")
+        button.setAttribute("style", "display: none");  
+        pokeCard.appendChild(button)
 
 // con esto podemos ver los cambios que hagamos a los stats con el input de tipo range
 let update = ()=>{
@@ -113,6 +108,7 @@ let update = ()=>{
     if(e.target.type === "range"){
     const label = e.target.previousElementSibling;
     label.innerHTML = `${e.target.value}`;
+    button.setAttribute("style", "display: block");
     }
   })
 }
@@ -202,3 +198,12 @@ function removeChildNodes(parent) {
   }
 }
 fetchPokemons(offset, limit);
+
+
+
+
+
+
+
+
+ 
