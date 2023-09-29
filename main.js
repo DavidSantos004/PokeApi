@@ -81,26 +81,78 @@ const renderPokemonStats = stats => {
         const statElement = document.createElement("div");
         const statElementName = document.createElement("div");
         const statElementAmount = document.createElement("div");
+        statElementAmount.setAttribute("id", "stat")
         const statElementInput = document.createElement("input")
         statElementInput.setAttribute("type", "range")
         statElementInput.setAttribute("value", stat.base_stat)
         statElementInput.textContent = stat.base_stat;
         statElementName.textContent = stat.stat.name;
+
         statElementAmount.textContent = stat.base_stat;
         statElement.appendChild(statElementName);
         statElement.appendChild(statElementAmount);
         statElement.appendChild(statElementInput);
         pokeStats.appendChild(statElement);
+        
         update();
     });    
 }
-//mostrar boton para actualizar cambios
-const button = document.createElement("input");
-        button.setAttribute("type", "submit");
-        button.setAttribute("value", "Actualizar");
-        button.setAttribute("class", "actualizar")
-        button.setAttribute("style", "display: none");  
-        pokeCard.appendChild(button)
+
+// aqui se recopilan los datos del poquemon para hacer "POST"
+const saveStatsButton = document.getElementById("saveStatsButton");
+
+saveStatsButton.addEventListener("click", () => {
+  const pokemonName = pokeName.textContent;
+  const pokemonId = pokeId.textContent.replace("Nº ", ""); 
+  const pokemonImage = pokeImg.src;
+  
+const statValues = [];
+
+const statElements = document.querySelectorAll('div[id="stat"]');
+
+statElements.forEach((statElement) => {
+  const statValue = parseInt(statElement.textContent);
+  statValues.push(statValue);
+});
+
+console.log(statValues);
+ 
+   const pokemonData = {
+    name: pokemonName,
+    id: pokemonId,
+    image: pokemonImage,
+    hp: statValues[0],
+    attack: statValues[1],
+    defense:statValues[2],
+    specialAttack : statValues[3],
+    specialDefense : statValues[4],
+    speed : statValues[5]
+   };
+  
+
+  fetch("https://650c323b47af3fd22f673fc5.mockapi.io/Pokemones", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(pokemonData),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Datos guardados exitosamente:", data);
+    })
+    .catch((error) => {
+      console.error("Error al guardar datos:", error);
+      
+    });
+});
+
+// mostrar datos modificados
+//COMING SOON....///
+
+
+
+
 
 // con esto podemos ver los cambios que hagamos a los stats con el input de tipo range
 let update = ()=>{
@@ -108,10 +160,10 @@ let update = ()=>{
     if(e.target.type === "range"){
     const label = e.target.previousElementSibling;
     label.innerHTML = `${e.target.value}`;
-    button.setAttribute("style", "display: block");
     }
   })
 }
+
 
 //si no se encuentra algun dato o ocurre un error
 const renderNotFound = () => {
