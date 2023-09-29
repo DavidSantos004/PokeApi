@@ -30,6 +30,8 @@ Este es un proyecto de Pokedex en línea que te permite buscar información deta
 
 5. Para buscar otro Pokémon, simplemente repite el paso 2.
 
+6. Solo usar el boton de actualizar despues de haber hecho la modificacion de las caracteristicas. no antes
+
 ## Capturas de Pantalla
 
 ![Captura de Pantalla](captura1.png)
