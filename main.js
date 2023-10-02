@@ -31,6 +31,15 @@ const typeColors = {
     default: '#2A1A1F',
 };
 
+const callModifiedData = event =>{
+  event.preventDefault();
+  const { value } = event.target.pokemon;
+    fetch(`http://localhost:3000/Pokemones${value.toLowerCase()}`)
+        .then(dataM => dataM.json())
+        .then(responseM => renderPokemonData(responseM))
+        .catch(err => renderNotFound())
+}
+
 
 //buscar pokemon
 const searchPokemon = event => {
@@ -77,6 +86,8 @@ const renderPokemonTypes = types => {
 const renderPokemonStats = stats => {
     pokeStats.innerHTML = '';
 
+
+    
     stats.forEach(stat => {
         const statElement = document.createElement("div");
         const statElementName = document.createElement("div");
@@ -95,12 +106,12 @@ const renderPokemonStats = stats => {
         pokeStats.appendChild(statElement);
         
         update();
-    });    
+    });  
+    
 }
 
-// aqui se recopilan los datos del poquemon para hacer "POST"
+// aqui se recopilan los datos del pokemon para hacer "POST"
 const saveStatsButton = document.getElementById("saveStatsButton");
-
 saveStatsButton.addEventListener("click", () => {
   const pokemonName = pokeName.textContent;
   const pokemonId = pokeId.textContent.replace("Nº ", ""); 
@@ -130,7 +141,7 @@ console.log(statValues);
    };
   
 
-  fetch("https://650c323b47af3fd22f673fc5.mockapi.io/Pokemones", {
+  fetch("http://localhost:3000/Pokemones", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -148,6 +159,10 @@ console.log(statValues);
 });
 
 // mostrar datos modificados
+
+
+
+
 //COMING SOON....///
 
 
