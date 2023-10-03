@@ -1,0 +1,16 @@
+{
+  "name": "pokeapi",
+  "version": "1.0.0",
+  "description": "Este es un proyecto de Pokedex en línea que te permite buscar información detallada sobre diferentes Pokémon. El proyecto está diseñado para ayudarte a aprender sobre el consumo de APIs y el manejo del DOM en JavaScript. Puedes acceder a la versión en vivo de este proyecto [aquí](https://davidsantos004.github.io/PokeApi/).",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "json-server --watch db.json --port 5010 --host 127.0.0.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "json-server": "0.17.4"
+  }
+}

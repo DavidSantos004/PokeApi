@@ -49,7 +49,7 @@ const renderPokemonTypes = (types) => {
 //buscar pokemon
 const searchPokemon = async (event) => {
   event.preventDefault();
-  let res = await (await fetch("http://localhost:3000/Pokemones")).json();
+  let res = await (await fetch("http://127.0.0.1:5010/Pokemones")).json();
   const { value } = event.target.pokemon;
   let exist = false;
   var pokemon = {};
@@ -188,7 +188,7 @@ const searchPokemon = async (event) => {
         speed: statValues[5],
       };
 
-      fetch("http://localhost:3000/Pokemones", {
+      fetch("http://127.0.0.1:5010/Pokemones", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -311,7 +311,7 @@ const searchPokemon = async (event) => {
         speed: statValues[5],
       };
 
-      fetch("http://localhost:3000/Pokemones", {
+      fetch("http://127.0.0.1:5010/Pokemones", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
